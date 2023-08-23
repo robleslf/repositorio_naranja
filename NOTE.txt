@@ -1,0 +1,1 @@
+Se han creado dos versiones de la casi_calculadora, una en JavaScript y otra en Python, a la espera de saber cuál rinde mejor
