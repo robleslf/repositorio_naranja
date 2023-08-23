@@ -1,0 +1,9 @@
+# Ignorar archivos en caché de Python
+__pycache__/
+
+# Ignorar archivos compilados de Python
+*.pyc
+*.pyo
+
+# Ignorar archivos de respaldo de Vim
+.*.swp
