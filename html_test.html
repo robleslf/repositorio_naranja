@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>موقعي الإلكتروني 1998</title>
+<style>
+  body {
+    background-color: #000000; /* الخلفية سوداء */
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    color: #ff00ff; /* حروف وردية نابضة */
+  }
+  
+  #header {
+    background-color: #ff00ff; /* وردي مشرق */
+    padding: 10px;
+  }
+  
+  #header h1 {
+    color: #fff241; /* حروف بيضاء في العنوان */
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  #nav {
+    background-color: #000000;
+    padding: 5px;
+  }
+  
+  #nav a {
+    text-decoration: none;
+    margin: 0 10px;
+    color: #fffb2d;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  #nav a:hover {
+    color: #ffffff; /* تغيير لون الروابط عند تمرير الماوس فوقها */
+  }
+  
+  #content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .gif-container {
+    flex: 1;
+    padding-right: 20px;
+    text-align: center;
+  }
+  
+  .gif {
+    max-width: 100%;
+  }
+  
+  section {
+    background-color: #000000;
+    flex: 2;
+    padding: 20px;
+    border: 1px dashed #ff25e2;
+  }
+  
+  article {
+    background-color: #000000;
+    padding: 10px;
+    border: 1px dashed #ff1fda;
+    margin: 10px 0;
+    width: 100%;
+  }
+  
+  aside {
+    background-color: #000000;
+    padding: 10px;
+    border: 1px dashed #f82aff;
+    flex: 1;
+    width: 100%;
+  }
+  
+  #footer {
+    background-color: hsl(0, 0%, 100%);
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>موقعي الإلكتروني</h1>
+</div>
+<div id="nav">
+  <a href="#">الصفحة الرئيسية</a>
+  <a href="#">عني</a>
+  <a href="#">صوري</a>
+  <a href="#">اتصل بي</a>
+</div>
+<div id="content">
+  <div class="gif-container">
+    <!-- عنوان الصورة المتحركة المقدمة -->
+    <img class="gif" src="https://static.wikia.nocookie.net/survive-the-disasters-fanon/images/e/e5/HamoodHabibi.gif" alt="GIF متحرك">
+    <div class="interactive-menu">
+      <a href="#">خيار 1</a>
+      <a href="#">خيار 2</a>
+      <a href="#">خيار 3</a>
+    </div>
+  </div>
+  <section>
+    <p>مرحبًا أصدقائي! مرحبًا بكم في مساحتي على الويب. هنا أشارك أفكاري وتجاربي.</p>
+    <p>لا تفوت فرصة الإطلاع على مجموعتي من <a href="#">الصور الرائعة</a> وشاركني رأيك.</p>
+    <img src="https://cdn.images.express.co.uk/img/dynamic/78/590x/621427_1.jpg" alt="صورة إضافية">
+  </section>
+  <section>
+    <h2>آخر الأخبار</h2>
+    <article>
+      <h3>مغامرة جديدة</h3>
+      <p>يا أصدقاء! بدأت اليوم مغامرة جديدة في حياتي. أنا متحمس لما هو قادم.</p>
+    </article>
+    <article>
+      <h3>صور مع الأصدقاء</h3>
+      <p>تفضلوا بالنظر إلى هذه الصور المجنونة التي التقطتها مع أصدقائي في الحديقة! ضحك ولحظات رائعة مضمونة.</p>
+    </article>
+  </section>
+  <aside>
+    <h2>لا تفوته</h2>
+    <p>لا تفوت فرصة الانضمام إلى الفعاليات القادمة! احتفالات، ترفيه، والكثير من الإيقاع والشخصية الكاني/شوني!</p>
+  </aside>
+</div>
+<div id="footer">
+  <p>&copy; 1998 موقعي الإلكتروني. جميع الحقوق محفوظة.</p>
+</div>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
