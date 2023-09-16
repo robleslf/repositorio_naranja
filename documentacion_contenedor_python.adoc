@@ -1,0 +1,102 @@
+== Contenedor Python
+
+Crear un contenedor Docker con Python 3.11 implica configurar un entorno de ejecución aislado en el que se pueda ejecutar aplicaciones Python que requieran específicamente esta versión.
+
+Para ello se necesitará tener un directorio con un archivo Dockerfile, un archivo app.py y un archivo requirements.txt; este directorio se encuentra subido al repositorio en esta rama Python3.11, sin embargo, los diferentes archivos deben ser ajustados dependiendo de las características que se necesiten para cada contenedor en concreto.
+
+En este directorio estos archivos tienen el siguiente contenido:
+
+=== Dockerfile:
+
+[source, Dockerfile]
+----
+# Usa la imagen base de Python 3.11
+FROM python:3.11
+
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copia los archivos de tu proyecto al directorio de trabajo en el contenedor
+COPY . /app
+
+# Instala las dependencias de tu aplicación si es necesario
+# RUN pip install -r requirements.txt
+
+# Comando por defecto para ejecutar cuando se inicie el contenedor
+CMD ["python", "app.py"]
+----
+
+* **FROM python:3.11**: Esta línea especifica la imagen base que se utilizará como punto de partida para la imagen Docker. En este caso, se está utilizando la imagen oficial de *Python 3.11* que se encuentra en *Docker Hub*.
+
+* **WORKDIR /app**: Con esta línea, se establece el directorio de trabajo dentro del contenedor en `/app`. Esto significa que todos los comandos y acciones posteriores se realizarán en el contexto de este directorio dentro del contenedor.
+
+* **COPY . /app**: Aquí se están copiando todos los archivos y directorios desde el directorio de construcción al directorio de trabajo `/app` en el contenedor. Esto incluye todos los archivos del proyecto, como código fuente, scripts, y cualquier otro archivo necesario para la aplicación en Python.
+
+* **# RUN pip install -r requirements.txt (comentario)**: Esta línea está comentada, lo que significa que está desactivada en el Dockerfile actual. Sin embargo, es una línea que se utilizaría para instalar las dependencias de la aplicación desde el archivo `requirements.txt` si el proyecto las requiere.
+
+* **CMD ["python", "app.py"]**: Esta línea establece el comando por defecto que se ejecutará cuando se inicie un contenedor basado en esta imagen. En este caso, el contenedor ejecutará el script Python `app.py` utilizando la instalación de *Python 3.11* que se encuentra en el contenedor. Esto significa que cuando inicies el contenedor, tu aplicación Python se ejecutará automáticamente.
+
+
+=== requirements.txt:
+----
+Flask==2.1.0
+requests>=2.26.0
+numpy~=1.22.0
+----
+
+
+Conviene explicar cómo funcionan los operadores:
+
+- Flask*==*2.1.0 especifica que se necesita Flask en la versión exacta 2.1.0.
+
+- requests*>=*2.26.0 requiere al menos la versión 2.26.0 de la biblioteca requests, pero permite versiones posteriores.
+
+- numpy*~=*1.22.0 utiliza un rango de versión más restringido. Significa que se necesita una versión de numpy que sea al menos la 1.22.0, pero no permitirá que se instalen versiones 1.23.0 o superiores.
+
+[NOTE]
+Este es solo un archivo de ejemplo, los requerimientos pueden ser los que se quieran en función de las necesidades. Además hay que tener en cuenta que en el Dockerfile, la línea que instala estos requerimientos está comentada y por tanto habría que descomentarla si se necesitasen.
+
+
+=== app.py:
+[source, python]
+----
+print("contenedor creado")
+----
+
+Esta es una app extremadamente sencilla, pero nos servirá para comprobar que la imagen crea correctamente nuestro contenedor.
+
+Una vez tengamos los archivos como queremos, hay ejecutar el siguiente comando en la terminal desde el directorio mencionado:
+
+[source, bash]
+----
+docker build -t imagen-python:3.11 . 
+----
+
+Y la imagen se creará:
+
+image:https://i.postimg.cc/CL7cmsmR/003-creada-imagen-python.png[Creada imagen de Python 3.11]
+
+No está de más comprobarlo con el comando *docker images*:
+
+image:004_comprobada_imagen_python.png[Comprabada la imagen creada]
+
+Ahora podemos ejecutar el contenedor a partir de la imagen:
+
+[source, bash]
+----
+docker run -it --rm imagen-python:3.11
+----
+
+
+Y el programa de python debería correr perfectamente:
+
+image:005_comprobado_contenedor_python.png[Comprobado el contenedor]
+
+Hay que tener en cuenta que una vez finaliza la aplicación de python, el contenedor se cierra:
+
+image:006_comprobado_contenedor_python.png[El contenedor ya no corre]
+
+[NOTE]
+Al añadir --rm al crear el contenedor, este se eliminará automáticamente y no lo veremos en el registro de contenedores al usar *docker ps -a*, si queremos comprobar que se creó, cuando creemos el contenedor podemos eliminar --rm, y una vez se ejecute y finalice, podemos comprobar que lo hizo:
+
+image:007_comprobado_contenedor_python_2.png[Comprobando que se creó sin el --rm]
